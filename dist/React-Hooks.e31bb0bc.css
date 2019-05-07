@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    font-family: 
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Roboto',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        sans-serif;
+}
+
+.navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    padding: 0 5%;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    color: white;
+}
+
+.navigation ul li:hover {
+    cursor: pointer;
+}
+
+.navigation a {
+    text-decoration: none;
+}
+
+/*# sourceMappingURL=/React-Hooks.e31bb0bc.css.map */
