@@ -40,3 +40,63 @@ body {
 .navigation a {
     text-decoration: none;
 }
+
+main {
+    display: flex;
+    margin: 56px;
+    max-height: calc(100vh - 56px);
+}
+
+.leftContent {
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #282c34;
+    height: calc(100vh - 56px);
+}
+
+.leftContent img {
+    width: 40%;
+}
+
+.leftContent form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    width: 50%;
+    height: 200px;
+    margin: 50px auto 0 auto;
+    background: #333;
+    padding: 1.5em;
+}
+
+.leftContent form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftContent form .formTitle, .leftContent form .formLabel {
+    margin: 0;
+    color: white;
+}
+
+.leftContent form input {
+    padding: 5px;
+    border-radius: 5px; 
+    border: none;
+    margin-top: 0.2em;
+}
+
+.leftContent form button {
+    margin-top: 1em;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #61dafb;
+    color: black;
+}
+
