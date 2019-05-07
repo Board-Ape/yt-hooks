@@ -25748,12 +25748,86 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"index.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"../../.nvm/versions/node/v11.4.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../.nvm/versions/node/v11.4.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../.nvm/versions/node/v11.4.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"main.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../.nvm/versions/node/v11.4.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
+
+require("./main.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25762,13 +25836,48 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // Parcel is nice for smaller scale bundling instead of Babel
 // Create the App
 var App = function App() {
-  return _react.default.createElement(_react.Fragment, null, _react.default.createElement("nav", null, _react.default.createElement("a", null, _react.default.createElement("img", {
+  var linkImageStyle = {
+    backgroundImage: 'url(\'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png\')'
+  };
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement("nav", {
+    className: "navigation"
+  }, _react.default.createElement("a", null, _react.default.createElement("img", {
+    height: "40px",
     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
-  }))));
+  })), _react.default.createElement("ul", null, _react.default.createElement("li", null, "HOME"))), _react.default.createElement("main", null, _react.default.createElement("div", {
+    className: "leftContent"
+  }, _react.default.createElement("img", {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+  }), _react.default.createElement("form", null, _react.default.createElement("h2", {
+    className: "formTitle"
+  }, "Add a bookmark"), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "linkTitle",
+    className: "formLabel"
+  }, "Enter Bookmark Name "), _react.default.createElement("input", {
+    type: "text",
+    name: "linkTitle",
+    minLength: "1",
+    maxLength: "25",
+    placeholder: "25 characters max"
+  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "linkHref",
+    className: "formLabel"
+  }, "Enter Bookmark Name "), _react.default.createElement("input", {
+    type: "text",
+    name: "linkHref",
+    minLength: "7",
+    placeholder: "https://example.com"
+  })), _react.default.createElement("button", null, "Add"))), _react.default.createElement("div", {
+    className: "rightContent"
+  }, _react.default.createElement("div", null, _react.default.createElement("div", {
+    style: linkImageStyle
+  }), _react.default.createElement("div", null, _react.default.createElement("h2", null, _react.default.createElement("a", {
+    href: "#"
+  }, "My link!")))))));
 };
 
 _reactDom.default.render(_react.default.createElement(App, null), document.getElementById('app'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"../../.nvm/versions/node/v11.4.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./main.css":"main.css"}],"../../.nvm/versions/node/v11.4.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -25796,7 +25905,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63404" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49762" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
