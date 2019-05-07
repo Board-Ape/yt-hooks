@@ -25762,7 +25762,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // Parcel is nice for smaller scale bundling instead of Babel
 // Create the App
 var App = function App() {
-  return _react.default.createElement(_react.Fragment, null, _react.default.createElement("h1", null, "Hello World!"));
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement("nav", null, _react.default.createElement("a", null, _react.default.createElement("img", {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+  }))));
 };
 
 _reactDom.default.render(_react.default.createElement(App, null), document.getElementById('app'));

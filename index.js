@@ -7,7 +7,9 @@ import ReactDOM from 'react-dom';
 const App = () => {
     return(
         <Fragment>
-            <h1>Hello World!</h1>
+            <nav>
+                <a><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"/></a>
+            </nav>
         </Fragment>
     )
 }
