@@ -51,9 +51,13 @@ const App = () => {
                 </div>
 
                 <div className="rightContent">
-                    <div>
-                        <div style={linkImageStyle}/>
-                        <div><h2><a href="#">My link!</a></h2></div>
+                    <div className="linkCard">
+                        <div className="linkCardImage" style={linkImageStyle} />
+                        <div className="linkCardLink">
+                            <h2>
+                                <a href="#">My link!</a>
+                            </h2>
+                        </div>
                     </div>
                 </div>
             </main>

@@ -25869,9 +25869,14 @@ var App = function App() {
     placeholder: "https://example.com"
   })), _react.default.createElement("button", null, "Add"))), _react.default.createElement("div", {
     className: "rightContent"
-  }, _react.default.createElement("div", null, _react.default.createElement("div", {
+  }, _react.default.createElement("div", {
+    className: "linkCard"
+  }, _react.default.createElement("div", {
+    className: "linkCardImage",
     style: linkImageStyle
-  }), _react.default.createElement("div", null, _react.default.createElement("h2", null, _react.default.createElement("a", {
+  }), _react.default.createElement("div", {
+    className: "linkCardLink"
+  }, _react.default.createElement("h2", null, _react.default.createElement("a", {
     href: "#"
   }, "My link!")))))));
 };
@@ -25905,7 +25910,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49762" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54082" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
